@@ -6,20 +6,22 @@ import org.scalatools.testing.Logger;
 import org.scalatools.testing.Runner;
 
 
-public final class JUnitFramework implements Framework
-{
-  private static final Fingerprint[] FINGERPRINTS =
-          new Fingerprint[] { new JUnitFingerprint(), new JUnit3Fingerprint() };
+public final class JUnitFramework implements Framework {
+    private static final Fingerprint[] FINGERPRINTS =
+            new Fingerprint[]{new JUnitFingerprint(), new JUnit3Fingerprint(), new JUnitRunWithFingerprint()};
 
-  @Override
-  public String name() { return "JUnit"; }
+    @Override
+    public String name() {
+        return "JUnit";
+    }
 
-  @Override
-  public Runner testRunner(ClassLoader testClassLoader, Logger[] loggers)
-  {
-    return new JUnitRunner(testClassLoader, loggers);
-  }
+    @Override
+    public Runner testRunner(ClassLoader testClassLoader, Logger[] loggers) {
+        return new JUnitRunner(testClassLoader, loggers);
+    }
 
-  @Override
-  public Fingerprint[] tests() { return FINGERPRINTS; }
+    @Override
+    public Fingerprint[] tests() {
+        return FINGERPRINTS;
+    }
 }
